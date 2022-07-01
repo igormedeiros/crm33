@@ -1,0 +1,50 @@
+@startuml Projeto
+
+
+ class Pipeline{
+   -int id
+   -String name
+   -String desc
+   -Lista<Stage> stages
+   -Deal deal
+   
+ }
+
+class Stage{
+  -int id
+  -String name
+  -Double probabilityToClose
+}
+
+class Deal{
+  -int id
+  -Person person
+  -Company company
+  -Stage stage
+  -double value
+  -boolean status
+} 
+
+class Person{
+  int id
+  -String name
+  -String email
+  -String phone
+}
+
+class Company{
+  -int id
+  -String name  
+  -String website
+
+}
+
+
+Pipeline *-- Stage
+Pipeline *-- Deal
+Deal *-- Person
+Deal *-- Company
+
+
+
+ @enduml
