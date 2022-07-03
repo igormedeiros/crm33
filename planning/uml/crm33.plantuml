@@ -17,8 +17,7 @@ class Stage{
 }
 
 class Deal{
-  -Person person
-  -Company company
+  -Contact contact
   -Stage stage
   -Double value
   -Boolean status
@@ -50,6 +49,10 @@ class User{
   +doLogin()
 }
 
+class Administrator{
+  addDeal()
+}
+
 class Company{
   -String name
   -String Address
@@ -59,9 +62,11 @@ class Company{
 
 User --|> Person
 Contact --|> Person
+Administrator --|> User
 
 Pipeline "1" --* "*" Deal
-Pipeline "1" --* "1" User
+Pipeline "1" --* "1..*" User
+Pipeline "1" --* "1..*" User
 Deal "1..*" *-- "1" Stage 
 Deal "1..*" o-- "1" Contact
 Contact "1..*" --o "1" Company
