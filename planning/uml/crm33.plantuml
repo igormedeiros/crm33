@@ -1,0 +1,70 @@
+@startuml CRM33
+
+
+class Pipeline{
+  -String name
+  -String description
+  -Deal deal
+  addDeal()
+  addActivity()
+
+}
+
+class Stage{
+  -String name
+  - Integer priority
+  -Double probabilityToClose
+}
+
+class Deal{
+  -Person person
+  -Company company
+  -Stage stage
+  -Double value
+  -Boolean status
+  -List<Activity> activities
+}
+
+
+class Activity{
+  -String title
+  -Date date
+  -String notes
+  -String channel
+  -Boolean status
+
+}
+
+class Person{
+  -String name
+  -String email
+  -String phone
+}
+
+class Contact{
+  -Company company
+}
+
+class User{
+  -String passWord
+  +doLogin()
+}
+
+class Company{
+  -String name
+  -String Address
+  -String website
+
+}
+
+User --|> Person
+Contact --|> Person
+
+Pipeline "1" --* "*" Deal
+Pipeline "1" --* "1" User
+Deal "1..*" *-- "1" Stage 
+Deal "1..*" o-- "1" Contact
+Contact "1..*" --o "1" Company
+Deal "1..*" *--* "1..*" Activity
+
+@enduml
