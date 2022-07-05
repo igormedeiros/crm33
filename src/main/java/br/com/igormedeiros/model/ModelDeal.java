@@ -1,29 +1,45 @@
 package br.com.igormedeiros.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
-@Entity (tableName = "tb_deal")
-public class ModelDeal {
-    
-  private Contact contact;
-  private Stage stage;
+@Entity(name = "tb_deal")
+public class ModelDeal implements Serializable{
+
+  private static final long serialVersionUID = 1L;
+
+  @Id
+  private int id;
+
+  private ModelContact contact;
+  private ModelStage stage;
   private double value;
   private boolean status;
-  private ArrayList<Task> tasks;
+  private ArrayList<ModelTask> tasks;
 
-  public Contact getContact() {
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public ModelContact getContact() {
     return contact;
   }
 
-  public void setContact(Contact contact) {
+  public void setContact(ModelContact contact) {
     this.contact = contact;
   }
 
-  public Stage getStage() {
+  public ModelStage getStage() {
     return stage;
   }
 
-  public void setStage(Stage stage) {
+  public void setStage(ModelStage stage) {
     this.stage = stage;
   }
 
@@ -43,8 +59,7 @@ public class ModelDeal {
     this.status = status;
   }
 
-  public ArrayList<Task> getTasks() {
+  public ArrayList<ModelTask> getTasks() {
     return tasks;
   }
-
 }

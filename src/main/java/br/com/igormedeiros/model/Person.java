@@ -1,14 +1,43 @@
 package br.com.igormedeiros.model;
 
-import java.util.Map;
+import java.io.Serializable;
 
-public class Person {
-  
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+
+@Inheritance
+@Entity (name = "tb_person")
+public abstract class Person implements Serializable {
+
+  private static final long serialVersionUID = 1L;
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
+
+  @Column
   private String firstName;
+
+  @Column
   private String lastName;
+
+  @Column
   private String email;
-  private Map<String, String> channels;
+
+  @Column
+  private String phone;
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
 
   public String getFirstName() {
     return firstName;
@@ -34,15 +63,11 @@ public class Person {
     this.email = email;
   }
 
-  public Map<String, String> getChannels() {
-    return channels;
+  public String getPhone() {
+    return phone;
   }
 
-  public void addChannel(String channel, String value) {
-    channels.put(channel, value);
-  }
-
-  public String getChannels(String channel) {
-    return channels.get(channel);
+  public void setPhone(String phone) {
+    this.phone = phone;
   }
 }

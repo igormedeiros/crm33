@@ -1,11 +1,30 @@
 package br.com.igormedeiros.model;
 
-@Entity (tableName = "tb_stage")
-public class ModelStage {
+import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity( name= "tb_stage")
+
+public class ModelStage implements Serializable{
+
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    private int id;
+    
     private String name;
     private int priority;
     private double probabilityToClose;
+
+    public int getId() {
+        return id;
+      }
+    
+      public void setId(int id) {
+        this.id = id;
+      }
 
     public String getName() {
         return name;

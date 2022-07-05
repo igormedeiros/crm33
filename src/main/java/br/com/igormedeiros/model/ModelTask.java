@@ -1,9 +1,25 @@
 package br.com.igormedeiros.model;
 
+import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
-@Entity (tableName = "tb_task")
-public class ModelTask {
+@Entity(name = "tb_task")
+public class ModelTask implements Serializable{
+
+  private static final long serialVersionUID = 1L;
+  
+  @Id
+  private int id;
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
 
   private String name;
   private Date date;
@@ -12,54 +28,69 @@ public class ModelTask {
   private boolean status;
   private String type;
   private int priority;
-  private User assignee;
-  
-public String getName() {
+  private ModelUser assignee;
+
+  public String getName() {
     return name;
-}
-public void setName(String name) {
+  }
+
+  public void setName(String name) {
     this.name = name;
-}
-public Date getDate() {
+  }
+
+  public Date getDate() {
     return date;
-}
-public void setDate(Date date) {
+  }
+
+  public void setDate(Date date) {
     this.date = date;
-}
-public String getNotes() {
+  }
+
+  public String getNotes() {
     return notes;
-}
-public void setNotes(String notes) {
+  }
+
+  public void setNotes(String notes) {
     this.notes = notes;
-}
-public String getChannel() {
+  }
+
+  public String getChannel() {
     return channel;
-}
-public void setChannel(String channel) {
+  }
+
+  public void setChannel(String channel) {
     this.channel = channel;
-}
-public boolean isStatus() {
+  }
+
+  public boolean isStatus() {
     return status;
-}
-public void setStatus(boolean status) {
+  }
+
+  public void setStatus(boolean status) {
     this.status = status;
-}
-public String getType() {
+  }
+
+  public String getType() {
     return type;
-}
-public void setType(String type) {
+  }
+
+  public void setType(String type) {
     this.type = type;
-}
-public int getPriority() {
+  }
+
+  public int getPriority() {
     return priority;
-}
-public void setPriority(int priority) {
+  }
+
+  public void setPriority(int priority) {
     this.priority = priority;
-}
-public User getAssignee() {
+  }
+
+  public ModelUser getAssignee() {
     return assignee;
-}
-public void setAssignee(User assignee) {
+  }
+
+  public void setAssignee(ModelUser assignee) {
     this.assignee = assignee;
-}
+  }
 }

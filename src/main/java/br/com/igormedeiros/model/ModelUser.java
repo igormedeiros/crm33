@@ -1,16 +1,43 @@
 package br.com.igormedeiros.model;
 
-@Entity (tableName = "tb_user")
-public class ModelUser extends Person {
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity (name = "tb_user")
+
+public class ModelUser implements Serializable{
+
+  private static final long serialVersionUID = 1L;
+
+  @Id 
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private int id;
+
+  @Column
   private String userName;
+  
+  @Column
   private String password;
 
-  public User(String userName, String password) {
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public ModelUser(String userName, String password) {
     this.userName = userName;
     this.password = password;
   }
 
-  public User() {}
+  public ModelUser() {}
 
   public String getUserName() {
     return userName;
@@ -28,19 +55,19 @@ public class ModelUser extends Person {
     this.password = password;
   }
 
-  public void createCompany(Company company) {
+  public void createCompany(ModelCompany company) {
     //TODO
   }
 
-  public void createContact(Contact contact) {
+  public void createContact(ModelContact contact) {
     //TODO
   }
 
-  public void createDeal(Deal deal) {
+  public void createDeal(ModelDeal deal) {
     //TODO
   }
 
-  public void createStage(Deal deal, Stage stage) {
+  public void createStage(ModelDeal deal, ModelStage stage) {
     //TODO
   }
 
