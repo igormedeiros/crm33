@@ -44,29 +44,26 @@ Deal "1..*" *-- "1" Stage
 
 class Stage{
   -String name
-  - Integer priority
+  -Integer priority
   -Double probabilityToClose
 }
 
 class Task{
-  -String title
+  -String name
   -Date date
   -String notes
   -String channel
   -Boolean status
   -String type
-  -String priority
-  -String assignee
-  -String assigneeType
+  -Integer priority
+  -User assignee
+  
 }
-
-
 
 class Person{
   -String firstName
   -String lastName
-  -Map <String, String> contacts
-
+  -Map <String, String> channels
 }
 
 
