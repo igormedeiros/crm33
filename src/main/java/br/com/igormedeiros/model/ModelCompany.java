@@ -1,6 +1,8 @@
 package br.com.igormedeiros.model;
 
-public class Company {
+@Entity (tableName = "tb_company")
+
+public class ModelCompany {
 	
 	private String name;
 	private String address;

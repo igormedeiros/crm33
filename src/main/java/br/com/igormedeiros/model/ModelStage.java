@@ -1,6 +1,7 @@
 package br.com.igormedeiros.model;
 
-public class Stage {
+@Entity (tableName = "tb_stage")
+public class ModelStage {
 
     private String name;
     private int priority;

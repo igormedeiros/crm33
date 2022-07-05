@@ -2,7 +2,8 @@ package br.com.igormedeiros.model;
 
 import java.util.ArrayList;
 
-public class Deal {
+@Entity (tableName = "tb_deal")
+public class ModelDeal {
     
   private Contact contact;
   private Stage stage;

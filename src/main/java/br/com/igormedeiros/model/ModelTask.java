@@ -2,7 +2,8 @@ package br.com.igormedeiros.model;
 
 import java.util.Date;
 
-public class Task {
+@Entity (tableName = "tb_task")
+public class ModelTask {
 
   private String name;
   private Date date;

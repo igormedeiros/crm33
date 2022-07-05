@@ -3,6 +3,8 @@ package br.com.igormedeiros.model;
 import java.util.Map;
 
 public class Person {
+  
+  private int id;
   private String firstName;
   private String lastName;
   private String email;

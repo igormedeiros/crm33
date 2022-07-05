@@ -1,6 +1,7 @@
 package br.com.igormedeiros.model;
 
-public class User extends Person {
+@Entity (tableName = "tb_user")
+public class ModelUser extends Person {
   private String userName;
   private String password;
 

@@ -2,7 +2,8 @@ package br.com.igormedeiros.model;
 
 import java.util.ArrayList;
 
-public class Pipeline {
+@Entity (tableName = "tb_pipeline")
+public class ModelPipeline {
     
   private String name;
   private String description;
