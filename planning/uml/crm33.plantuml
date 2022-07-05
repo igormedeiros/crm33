@@ -1,19 +1,24 @@
 @startuml CRM33
 
+Pipeline "1" --* "*" Deal
 
 class Pipeline{
   -String name
   -String description
   -Deal deal
+  -List<Stage> stages
   addDeal()
-  addActivity()
+  addStage()
+  removeDeal()
+  removeStage()
+  getDeal()
+  getStage()
+  getStages()
+  getName()
+  getDescription()
+  setName()
+  setDescription()
 
-}
-
-class Stage{
-  -String name
-  - Integer priority
-  -Double probabilityToClose
 }
 
 class Deal{
@@ -21,55 +26,91 @@ class Deal{
   -Stage stage
   -Double value
   -Boolean status
-  -List<Activity> activities
+  -List<Taks> tasks
+  addTask()
+  removeTask()
+  getContact()
+  getStage()
+  getValue()
+  getStatus()
+  getTasks()
+  setContact()
+  setStage()
+  setValue()
+  setStatus()
 }
 
+Deal "1..*" *-- "1" Stage
 
-class Activity{
+class Stage{
+  -String name
+  - Integer priority
+  -Double probabilityToClose
+}
+
+class Task{
   -String title
   -Date date
   -String notes
   -String channel
   -Boolean status
-
+  -String type
+  -String priority
+  -String assignee
+  -String assigneeType
 }
+
+
 
 class Person{
-  -String name
-  -String email
-  -String phone
+  -String firstName
+  -String lastName
+  -Map <String, String> contacts
+
 }
 
+
+Contact --|> Person
 class Contact{
   -Company company
+  -String notes
 }
+
+User --|> Person
+Pipeline "1" --* "1..*" User
 
 class User{
+
   -String passWord
-  +doLogin()
+  -String userName
+
+  +createCompany()
+  +createContact()
+  +createDeal()
+  +createStage(String deal, String stage)
+  +createTask(String deal, String stage, String task)
+  +createPipeline(String name, String description)
+  +login(String userName, String passWord)
 }
 
+Administrator --|> User
+Pipeline "1" --* "1..*" Administrator
+
 class Administrator{
-  addDeal()
+
+  +createUser(String userName, String passWord)
+
 }
 
 class Company{
   -String name
   -String Address
   -String website
-
+  -String phone
 }
 
-User --|> Person
-Contact --|> Person
-Administrator --|> User
-
-Pipeline "1" --* "*" Deal
-Pipeline "1" --* "1..*" User
-Pipeline "1" --* "1..*" Administrator
-Deal "1..*" *-- "1" Stage 
 Deal "1..*" o-- "1" Contact
 Contact "1..*" --o "1" Company
-Deal "1..*" *--* "1..*" Activity
+Deal "1..*" *--* "1..*" Task
 
 @enduml
