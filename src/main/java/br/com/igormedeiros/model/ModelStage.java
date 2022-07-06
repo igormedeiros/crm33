@@ -1,48 +1,27 @@
 package br.com.igormedeiros.model;
 
 import java.io.Serializable;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
 
-@Entity( name= "tb_stage")
+@Entity(name = "tb_stage")
+public class ModelStage implements Serializable {
+  private static final long serialVersionUID = 1L;
 
-public class ModelStage implements Serializable{
+  @Id
+  @Getter
+  private int id;
 
-    private static final long serialVersionUID = 1L;
+  @Getter
+  @Setter
+  @Column(name = "stage_name", columnDefinition = "varchar(100)")
+  private String name;
 
-    @Id
-    private int id;
-    
-    private String name;
-    private int priority;
-    private double probabilityToClose;
-
-    public int getId() {
-        return id;
-      }
-    
-      public void setId(int id) {
-        this.id = id;
-      }
-
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public int getPriority() {
-        return priority;
-    }
-    public void setPriority(int priority) {
-        this.priority = priority;
-    }
-    public double getProbabilityToClose() {
-        return probabilityToClose;
-    }
-    public void setProbabilityToClose(double probabilityToClose) {
-        this.probabilityToClose = probabilityToClose;
-    }
-    
+  @Getter
+  @Setter
+  @Column(name = "stage_probability_to_close", columnDefinition = "double")
+  private double probabilityToClose;
 }

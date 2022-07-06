@@ -1,65 +1,48 @@
 package br.com.igormedeiros.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity(name = "tb_deal")
-public class ModelDeal implements Serializable{
-
+public class ModelDeal implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Getter
   private int id;
 
-  private ModelContact contact;
-  private ModelStage stage;
+  @Setter
+  @Getter
+  @Column(name = "deal_name", columnDefinition = "varchar(100)")
+  private String dealName;
+
+  @Column(name = "deal_description", columnDefinition = "varchar(250)")
+  private String dealDescription;
+
+  @Setter
+  @Getter
+  @Column(name = "deal_contact_id", columnDefinition = "varchar(100)")
+  private int dealContactId;
+
+  @Setter
+  @Getter
+  @Column(name = "deal_stage", columnDefinition = "varchar(100)")
+  private String dealStage;
+
+  @Setter
+  @Getter
+  @Column(name = "deal_probability_to_close", columnDefinition = "double")
   private double value;
+
+  @Setter
+  @Getter
+  @Column(name = "deal_status", columnDefinition = "boolean")
   private boolean status;
-  private ArrayList<ModelTask> tasks;
-
-  public int getId() {
-    return id;
-  }
-
-  public void setId(int id) {
-    this.id = id;
-  }
-
-  public ModelContact getContact() {
-    return contact;
-  }
-
-  public void setContact(ModelContact contact) {
-    this.contact = contact;
-  }
-
-  public ModelStage getStage() {
-    return stage;
-  }
-
-  public void setStage(ModelStage stage) {
-    this.stage = stage;
-  }
-
-  public double getValue() {
-    return value;
-  }
-
-  public void setValue(double value) {
-    this.value = value;
-  }
-
-  public boolean isStatus() {
-    return status;
-  }
-
-  public void setStatus(boolean status) {
-    this.status = status;
-  }
-
-  public ArrayList<ModelTask> getTasks() {
-    return tasks;
-  }
 }
