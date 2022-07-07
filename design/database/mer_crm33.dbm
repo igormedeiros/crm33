@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
  Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.9.4" use-changelog="false" last-position="0,0" last-zoom="1" max-obj-count="8"
+<dbmodel pgmodeler-ver="0.9.4" use-changelog="false" last-position="0,297" last-zoom="1" max-obj-count="13"
 	 default-schema="public" default-owner="postgres"
 	 layers="Default layer"
 	 active-layers="0"
@@ -25,10 +25,10 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <schema name="public" layers="0" rect-visible="true" fill-color="#e1e1e1" sql-disabled="true">
 </schema>
 
-<table name="tb_company" layers="0" collapse-mode="2" max-obj-count="6" z-value="0">
+<table name="tb_companies" layers="0" collapse-mode="2" max-obj-count="6" z-value="0">
 	<schema name="public"/>
 	<role name="crm33"/>
-	<position x="60" y="60"/>
+	<position x="700" y="740"/>
 	<column name="id" not-null="true"
 	 identity-type="BY DEFAULT" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
 		<type name="integer" length="0"/>
@@ -45,7 +45,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="company_website">
 		<type name="character varying" length="250"/>
 	</column>
-	<constraint name="tb_company_pkey" type="pk-constr" table="public.tb_company">
+	<constraint name="tb_company_pkey" type="pk-constr" table="public.tb_companies">
 		<columns names="id" ref-type="src-columns"/>
 	</constraint>
 </table>
@@ -55,34 +55,28 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<role name="crm33"/>
 </sequence>
 
-<table name="tb_contact" layers="0" collapse-mode="2" max-obj-count="6" z-value="0">
+<table name="tb_contacts" layers="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
 	<role name="crm33"/>
-	<position x="460" y="60"/>
+	<position x="440" y="420"/>
 	<column name="id" not-null="true">
 		<type name="integer" length="0"/>
 	</column>
-	<column name="contact_email">
-		<type name="character varying" length="250"/>
-	</column>
-	<column name="contact_name">
+	<column name="contact_first_name" not-null="true">
 		<type name="character varying" length="100"/>
 	</column>
 	<column name="contact_last_name">
 		<type name="character varying" length="100"/>
 	</column>
-	<column name="contact_phone">
-		<type name="character varying" length="20"/>
-	</column>
-	<constraint name="tb_contact_pkey" type="pk-constr" table="public.tb_contact">
+	<constraint name="tb_contact_pkey" type="pk-constr" table="public.tb_contacts">
 		<columns names="id" ref-type="src-columns"/>
 	</constraint>
 </table>
 
-<table name="tb_pipeline" layers="0" collapse-mode="2" max-obj-count="3" z-value="0">
+<table name="tb_pipelines" layers="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
 	<role name="crm33"/>
-	<position x="880" y="60"/>
+	<position x="1380" y="260"/>
 	<column name="id" not-null="true"
 	 identity-type="BY DEFAULT" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
 		<type name="integer" length="0"/>
@@ -93,9 +87,17 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="pipeline_name">
 		<type name="character varying" length="100"/>
 	</column>
-	<constraint name="tb_pipeline_pkey" type="pk-constr" table="public.tb_pipeline">
+	<constraint name="tb_pipeline_pkey" type="pk-constr" table="public.tb_pipelines">
 		<columns names="id" ref-type="src-columns"/>
 	</constraint>
+
+	<customidxs object-type="column">
+		<object name="id_tb_users" index="3"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="tb_users_fk" index="1"/>
+	</customidxs>
 </table>
 
 <sequence name="tb_pipeline_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1" sql-disabled="true">
@@ -103,10 +105,10 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<role name="crm33"/>
 </sequence>
 
-<table name="tb_deal" layers="0" collapse-mode="2" max-obj-count="12" z-value="0">
+<table name="tb_deals" layers="0" collapse-mode="2" max-obj-count="8" z-value="0">
 	<schema name="public"/>
 	<role name="crm33"/>
-	<position x="1300" y="60"/>
+	<position x="940" y="40"/>
 	<column name="id" not-null="true"
 	 identity-type="BY DEFAULT" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
 		<type name="integer" length="0"/>
@@ -114,33 +116,29 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="deal_name">
 		<type name="character varying" length="100"/>
 	</column>
-	<column name="deal_contact_id">
-		<type name="character varying" length="100"/>
-	</column>
 	<column name="deal_description">
 		<type name="character varying" length="250"/>
 	</column>
-	<column name="deal_stage">
-		<type name="character varying" length="100"/>
+	<column name="deal_status_id" not-null="true">
+		<type name="integer" length="50"/>
 	</column>
-	<column name="deal_status">
-		<type name="boolean" length="0"/>
-	</column>
-	<column name="status">
-		<type name="boolean" length="0"/>
-	</column>
-	<column name="value">
-		<type name="double precision" length="0"/>
-	</column>
-	<column name="deal_stage_id">
+	<column name="deal_stage_id" not-null="true">
 		<type name="integer" length="0"/>
 	</column>
-	<column name="deal_value">
-		<type name="double precision" length="0"/>
+	<column name="deal_value" not-null="true">
+		<type name="decimal" length="0"/>
 	</column>
-	<constraint name="tb_deal_pkey" type="pk-constr" table="public.tb_deal">
+	<constraint name="tb_deal_pkey" type="pk-constr" table="public.tb_deals">
 		<columns names="id" ref-type="src-columns"/>
 	</constraint>
+
+	<customidxs object-type="column">
+		<object name="id_tb_pipelines" index="6"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="tb_pipelines_fk" index="1"/>
+	</customidxs>
 </table>
 
 <sequence name="tb_deal_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1" sql-disabled="true">
@@ -153,61 +151,66 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<role name="crm33"/>
 </sequence>
 
-<table name="tb_stage" layers="0" collapse-mode="2" max-obj-count="3" z-value="0">
+<table name="tb_stages" layers="0" collapse-mode="2" max-obj-count="3" z-value="0">
 	<schema name="public"/>
 	<role name="crm33"/>
-	<position x="60" y="380"/>
+	<position x="1360" y="80"/>
 	<column name="id" not-null="true">
 		<type name="integer" length="0"/>
 	</column>
-	<column name="stage_name">
+	<column name="stage_name" not-null="true">
 		<type name="character varying" length="100"/>
 	</column>
-	<column name="stage_probability_to_close">
-		<type name="double precision" length="0"/>
+	<column name="stage_probability_to_close" not-null="true">
+		<type name="decimal" length="0"/>
 	</column>
-	<constraint name="tb_stage_pkey" type="pk-constr" table="public.tb_stage">
+	<constraint name="tb_stage_pkey" type="pk-constr" table="public.tb_stages">
 		<columns names="id" ref-type="src-columns"/>
 	</constraint>
 </table>
 
-<table name="tb_task" layers="0" collapse-mode="2" max-obj-count="9" z-value="0">
+<table name="tb_tasks" layers="0" collapse-mode="2" max-obj-count="9" z-value="0">
 	<schema name="public"/>
 	<role name="crm33"/>
-	<position x="520" y="380"/>
+	<position x="500" y="40"/>
 	<column name="id" not-null="true">
 		<type name="integer" length="0"/>
 	</column>
-	<column name="task_assignee">
+	<column name="task_assignee" not-null="true">
 		<type name="double precision" length="0"/>
 	</column>
-	<column name="task_date">
+	<column name="task_date" not-null="true">
 		<type name="date" length="0"/>
 	</column>
-	<column name="task_name">
+	<column name="task_name" not-null="true">
 		<type name="character varying" length="100"/>
 	</column>
 	<column name="task_notes">
 		<type name="character varying" length="500"/>
 	</column>
-	<column name="task_priority">
+	<column name="task_priority" not-null="true">
 		<type name="integer" length="0"/>
 	</column>
-	<column name="task_status">
-		<type name="boolean" length="0"/>
+	<column name="task_status" not-null="true">
+		<type name="integer" length="0"/>
 	</column>
-	<column name="task_type">
-		<type name="character varying" length="50"/>
-	</column>
-	<constraint name="tb_task_pkey" type="pk-constr" table="public.tb_task">
+	<constraint name="tb_task_pkey" type="pk-constr" table="public.tb_tasks">
 		<columns names="id" ref-type="src-columns"/>
 	</constraint>
+
+	<customidxs object-type="column">
+		<object name="id_tb_deals" index="7"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="tb_deals_fk" index="1"/>
+	</customidxs>
 </table>
 
-<table name="tb_user" layers="0" collapse-mode="2" max-obj-count="3" z-value="0">
+<table name="tb_users" layers="0" collapse-mode="2" max-obj-count="3" z-value="0">
 	<schema name="public"/>
 	<role name="crm33"/>
-	<position x="900" y="380"/>
+	<position x="1360" y="540"/>
 	<column name="id" not-null="true"
 	 identity-type="BY DEFAULT" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
 		<type name="integer" length="0"/>
@@ -218,7 +221,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="crm_user_name">
 		<type name="character varying" length="100"/>
 	</column>
-	<constraint name="tb_user_pkey" type="pk-constr" table="public.tb_user">
+	<constraint name="tb_user_pkey" type="pk-constr" table="public.tb_users">
 		<columns names="id" ref-type="src-columns"/>
 	</constraint>
 </table>
@@ -227,6 +230,195 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<schema name="public"/>
 	<role name="crm33"/>
 </sequence>
+
+<relationship name="tb_pipeline_has_many_tb_deal" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#471fa5"
+	 src-table="public.tb_pipelines"
+	 dst-table="public.tb_deals"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="many_tb_deal_has_many_tb_contact" type="relnn" layers="0"
+	 src-col-pattern="{sc}_{st}" dst-col-pattern="{sc}_{dt}"
+	 pk-pattern="{gt}_pk" uq-pattern="{gt}_uq"
+	 src-fk-pattern="{st}_fk" dst-fk-pattern="{dt}_fk"
+	 pk-col-pattern="id"
+	 custom-color="#bb4696"
+	 src-table="public.tb_deals"
+	 dst-table="public.tb_contacts"
+	 src-required="false" dst-required="false"
+	 table-name="many_tb_deal_has_many_tb_contact"/>
+
+<relationship name="tb_deal_has_many_tb_task" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#b333e1"
+	 src-table="public.tb_deals"
+	 dst-table="public.tb_tasks"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="many_tb_deal_has_many_tb_stage" type="relnn" layers="0"
+	 src-col-pattern="{sc}_{st}" dst-col-pattern="{sc}_{dt}"
+	 pk-pattern="{gt}_pk" uq-pattern="{gt}_uq"
+	 src-fk-pattern="{st}_fk" dst-fk-pattern="{dt}_fk"
+	 pk-col-pattern="id"
+	 custom-color="#fb097d"
+	 src-table="public.tb_deals"
+	 dst-table="public.tb_stages"
+	 src-required="false" dst-required="false"
+	 table-name="many_tb_deal_has_many_tb_stage"/>
+
+<relationship name="tb_user_has_many_tb_pipeline" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#823219"
+	 src-table="public.tb_users"
+	 dst-table="public.tb_pipelines"
+	 src-required="false" dst-required="false"/>
+
+<table name="tb_tasks_type" layers="0" collapse-mode="2" max-obj-count="4" z-value="0">
+	<schema name="public"/>
+	<role name="crm33"/>
+	<position x="0" y="420"/>
+	<column name="id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="tasks_type_name" not-null="true">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="tasks_type_description" not-null="true">
+		<type name="character varying" length="500"/>
+	</column>
+	<constraint name="tb_tasks_type_pkey" type="pk-constr" table="public.tb_tasks_type">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="id_tb_tasks" index="3"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="tb_tasks_fk" index="0"/>
+	</customidxs>
+</table>
+
+<relationship name="tb_tasks_has_many_tb_tasks_type" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#519766"
+	 src-table="public.tb_tasks"
+	 dst-table="public.tb_tasks_type"
+	 src-required="false" dst-required="false"/>
+
+<table name="tb_deal_status" layers="0" collapse-mode="2" max-obj-count="3" z-value="0">
+	<schema name="public"/>
+	<role name="crm33"/>
+	<position x="880" y="420"/>
+	<column name="id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="status_description" not-null="true">
+		<type name="character varying" length="100"/>
+	</column>
+	<constraint name="tb_status_pk" type="pk-constr" table="public.tb_deal_status">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="id_tb_deals" index="2"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="tb_deals_fk" index="0"/>
+	</customidxs>
+</table>
+
+<relationship name="tb_deals_has_many_tb_status" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#1ffb15"
+	 src-table="public.tb_deals"
+	 dst-table="public.tb_deal_status"
+	 src-required="false" dst-required="false"/>
+
+<table name="tb_contact_channels" layers="0" collapse-mode="2" max-obj-count="4" z-value="0">
+	<schema name="public"/>
+	<role name="crm33"/>
+	<position x="60" y="720"/>
+	<column name="id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="tb_contact_channels_type" not-null="true">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="tb_contact_channels_value" not-null="true">
+		<type name="character varying" length="500"/>
+	</column>
+	<constraint name="tb_contact_channels_pk" type="pk-constr" table="public.tb_contact_channels">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="id_tb_contacts" index="1"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="tb_contacts_fk" index="1"/>
+	</customidxs>
+</table>
+
+<relationship name="tb_contacts_has_many_tb_contact_channels" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#2e0168"
+	 src-table="public.tb_contacts"
+	 dst-table="public.tb_contact_channels"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="tb_companies_has_many_tb_contacts" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#a13a5d"
+	 src-table="public.tb_companies"
+	 dst-table="public.tb_contacts"
+	 src-required="false" dst-required="false"/>
+
+<table name="tb_tasks_status" layers="0" collapse-mode="2" max-obj-count="3" z-value="0">
+	<schema name="public"/>
+	<role name="crm33"/>
+	<position x="20" y="100"/>
+	<column name="id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="task_status_name" not-null="true">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="task_status_description">
+		<type name="character varying" length="500"/>
+	</column>
+	<constraint name="tb_tasks_status_pk" type="pk-constr" table="public.tb_tasks_status">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="many_tb_tasks_has_many_tb_tasks_status" type="relnn" layers="0"
+	 src-col-pattern="{sc}_{st}" dst-col-pattern="{sc}_{dt}"
+	 pk-pattern="{gt}_pk" uq-pattern="{gt}_uq"
+	 src-fk-pattern="{st}_fk" dst-fk-pattern="{dt}_fk"
+	 pk-col-pattern="id"
+	 custom-color="#765e49"
+	 src-table="public.tb_tasks"
+	 dst-table="public.tb_tasks_status"
+	 src-required="false" dst-required="false"
+	 table-name="many_tb_tasks_has_many_tb_tasks_status"/>
 
 <permission>
 	<object name="public" type="schema"/>
