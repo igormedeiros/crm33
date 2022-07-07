@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+ Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.9.4" use-changelog="false" last-position="0,0" last-zoom="1" max-obj-count="8"
+	 default-schema="public" default-owner="postgres"
+	 layers="Default layer"
+	 active-layers="0"
+	 layer-name-colors="#000000"
+	 layer-rect-colors="#b4b4b4"
+	 show-layer-names="false" show-layer-rects="false">
+<role name="crm33"
+ inherit="true"
+ login="true"
+ encrypted="true"
+ password="********">
+</role>
+
+<database name="crm33db" encoding="UTF8" lc-collate="en_US.UTF-8" lc-ctype="en_US.UTF-8" is-template="false" allow-conns="true">
+	<role name="postgres"/>
+	<tablespace name="pg_default"/>
+</database>
+
+<schema name="public" layers="0" rect-visible="true" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<table name="tb_company" layers="0" collapse-mode="2" max-obj-count="6" z-value="0">
+	<schema name="public"/>
+	<role name="crm33"/>
+	<position x="60" y="60"/>
+	<column name="id" not-null="true"
+	 identity-type="BY DEFAULT" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="company_address">
+		<type name="character varying" length="500"/>
+	</column>
+	<column name="company_name">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="company_phone">
+		<type name="character varying" length="20"/>
+	</column>
+	<column name="company_website">
+		<type name="character varying" length="250"/>
+	</column>
+	<constraint name="tb_company_pkey" type="pk-constr" table="public.tb_company">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="tb_company_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1" sql-disabled="true">
+	<schema name="public"/>
+	<role name="crm33"/>
+</sequence>
+
+<table name="tb_contact" layers="0" collapse-mode="2" max-obj-count="6" z-value="0">
+	<schema name="public"/>
+	<role name="crm33"/>
+	<position x="460" y="60"/>
+	<column name="id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="contact_email">
+		<type name="character varying" length="250"/>
+	</column>
+	<column name="contact_name">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="contact_last_name">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="contact_phone">
+		<type name="character varying" length="20"/>
+	</column>
+	<constraint name="tb_contact_pkey" type="pk-constr" table="public.tb_contact">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="tb_pipeline" layers="0" collapse-mode="2" max-obj-count="3" z-value="0">
+	<schema name="public"/>
+	<role name="crm33"/>
+	<position x="880" y="60"/>
+	<column name="id" not-null="true"
+	 identity-type="BY DEFAULT" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="pipeline_description">
+		<type name="character varying" length="500"/>
+	</column>
+	<column name="pipeline_name">
+		<type name="character varying" length="100"/>
+	</column>
+	<constraint name="tb_pipeline_pkey" type="pk-constr" table="public.tb_pipeline">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="tb_pipeline_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1" sql-disabled="true">
+	<schema name="public"/>
+	<role name="crm33"/>
+</sequence>
+
+<table name="tb_deal" layers="0" collapse-mode="2" max-obj-count="12" z-value="0">
+	<schema name="public"/>
+	<role name="crm33"/>
+	<position x="1300" y="60"/>
+	<column name="id" not-null="true"
+	 identity-type="BY DEFAULT" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="deal_name">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="deal_contact_id">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="deal_description">
+		<type name="character varying" length="250"/>
+	</column>
+	<column name="deal_stage">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="deal_status">
+		<type name="boolean" length="0"/>
+	</column>
+	<column name="status">
+		<type name="boolean" length="0"/>
+	</column>
+	<column name="value">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="deal_stage_id">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="deal_value">
+		<type name="double precision" length="0"/>
+	</column>
+	<constraint name="tb_deal_pkey" type="pk-constr" table="public.tb_deal">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="tb_deal_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1" sql-disabled="true">
+	<schema name="public"/>
+	<role name="crm33"/>
+</sequence>
+
+<sequence name="tb_deal1_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1" sql-disabled="true">
+	<schema name="public"/>
+	<role name="crm33"/>
+</sequence>
+
+<table name="tb_stage" layers="0" collapse-mode="2" max-obj-count="3" z-value="0">
+	<schema name="public"/>
+	<role name="crm33"/>
+	<position x="60" y="380"/>
+	<column name="id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="stage_name">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="stage_probability_to_close">
+		<type name="double precision" length="0"/>
+	</column>
+	<constraint name="tb_stage_pkey" type="pk-constr" table="public.tb_stage">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="tb_task" layers="0" collapse-mode="2" max-obj-count="9" z-value="0">
+	<schema name="public"/>
+	<role name="crm33"/>
+	<position x="520" y="380"/>
+	<column name="id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="task_assignee">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="task_date">
+		<type name="date" length="0"/>
+	</column>
+	<column name="task_name">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="task_notes">
+		<type name="character varying" length="500"/>
+	</column>
+	<column name="task_priority">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="task_status">
+		<type name="boolean" length="0"/>
+	</column>
+	<column name="task_type">
+		<type name="character varying" length="50"/>
+	</column>
+	<constraint name="tb_task_pkey" type="pk-constr" table="public.tb_task">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="tb_user" layers="0" collapse-mode="2" max-obj-count="3" z-value="0">
+	<schema name="public"/>
+	<role name="crm33"/>
+	<position x="900" y="380"/>
+	<column name="id" not-null="true"
+	 identity-type="BY DEFAULT" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="crm_user_password">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="crm_user_name">
+		<type name="character varying" length="100"/>
+	</column>
+	<constraint name="tb_user_pkey" type="pk-constr" table="public.tb_user">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="tb_user_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1" sql-disabled="true">
+	<schema name="public"/>
+	<role name="crm33"/>
+</sequence>
+
+<permission>
+	<object name="public" type="schema"/>
+	<roles names="postgres"/>
+	<privileges create="true" usage="true"/>
+</permission>
+<permission>
+	<object name="public" type="schema"/>
+	<privileges create="true" usage="true"/>
+</permission>
+</dbmodel>
