@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class StatusController {
-	
-	@GetMapping (path = "api/status")
-	public String checkStatus() {
-		return "API running";
-	}
+
+    @GetMapping(path = "api/status")
+    public String checkStatus() {
+        return "API running";
+    }
 
 }
