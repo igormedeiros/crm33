@@ -1,26 +1,22 @@
 package br.com.igormedeiros.model.contact;
 
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import javax.persistence.*;
-@Getter
-@Setter
+
+@Data
 @Entity(name = "tb_contact_channels")
 public class ContactChannelModel {
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-        private String type;
-        private String value;
+    private String type;
+    private String value;
 
-        @ManyToOne
-        @JoinColumn(name = "contact_id")
-        private ContactModel contact;
-
-
-
+    @ManyToOne
+    @JoinColumn(name = "contact_id")
+    private ContactModel contact;
 }

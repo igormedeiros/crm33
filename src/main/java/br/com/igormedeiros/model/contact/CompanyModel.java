@@ -1,28 +1,23 @@
 package br.com.igormedeiros.model.contact;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.util.List;
 
-@Getter
-@Setter
+@Data
 @Entity(name = "tb_companies")
 public class CompanyModel {
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-        private String name;
-        private String description;
-        private String phone;
-        private String webSite;
+    private String name;
+    private String description;
+    private String phone;
+    private String webSite;
 
-        @OneToMany(mappedBy = "company")
-        private List<ContactModel> contacts;
-
-
-
+    @OneToMany(mappedBy = "company")
+    private List<ContactModel> contacts;
 }

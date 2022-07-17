@@ -1,7 +1,7 @@
 package br.com.igormedeiros.controller;
 
-import br.com.igormedeiros.model.system.PipelineModel;
-import br.com.igormedeiros.repository.PipelineRepository;
+import br.com.igormedeiros.model.funnel.FunnelModel;
+import br.com.igormedeiros.repository.FunnelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,21 +14,21 @@ public class CRM33Controller {
 
 
     @Autowired
-    private PipelineRepository pipelineRepository;
+    private FunnelRepository funnelRepository;
 
     @GetMapping(path = "api/status")
     public String checkStatus() {
         return "API running";
     }
 
-    @GetMapping(path = "/pipelines")
-    public List<PipelineModel> getPipelines() {
-        return pipelineRepository.findAll();
+    @GetMapping(path = "/main")
+    public List<FunnelModel> getPipelines() {
+        return funnelRepository.findAll();
     }
 
-    @PostMapping(path = "/pipelines/new")
-    public void addPipeline(@RequestBody PipelineModel pipelineModel) {
-        pipelineRepository.save(pipelineModel);
+    @PostMapping(path = "/main/new")
+    public void addPipeline(@RequestBody FunnelModel pipelineModel) {
+        funnelRepository.save(pipelineModel);
     }
 
 }

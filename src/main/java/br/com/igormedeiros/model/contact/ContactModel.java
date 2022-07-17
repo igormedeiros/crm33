@@ -1,20 +1,18 @@
 package br.com.igormedeiros.model.contact;
 
-import br.com.igormedeiros.model.deal.DealModel;
-import br.com.igormedeiros.model.deal.task.TaskModel;
-import lombok.Getter;
-import lombok.Setter;
+import br.com.igormedeiros.model.opportunitie.OpportunityModel;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.UUID;
 
-@Getter
-@Setter
+@Data
 @Entity(name = "tb_contacts")
 public class ContactModel {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String firstName;
     private String lastName;
@@ -23,12 +21,9 @@ public class ContactModel {
     @JoinColumn(name = "company_id")
     private CompanyModel company;
 
-    @OneToMany (mappedBy = "contact")
+    @OneToMany(mappedBy = "contact")
     private List<ContactChannelModel> channels;
 
-    @OneToMany (mappedBy = "contact")
-    private List<DealModel> deals;
-
-    @OneToMany (mappedBy = "assigneeContact")
-    private List<TaskModel> tasks;
+    @OneToMany(mappedBy = "contact")
+    private List<OpportunityModel> opportunities;
 }

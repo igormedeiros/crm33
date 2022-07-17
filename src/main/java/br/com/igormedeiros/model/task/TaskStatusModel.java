@@ -1,18 +1,16 @@
-package br.com.igormedeiros.model.deal.task;
+package br.com.igormedeiros.model.task;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.util.List;
 
-@Getter
-@Setter
+@Data
 @Entity(name = "tb_task_statuses")
 public class TaskStatusModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String name;
     private String description;
 
