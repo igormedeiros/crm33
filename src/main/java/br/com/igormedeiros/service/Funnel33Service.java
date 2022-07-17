@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CRM33Service {
+public class Funnel33Service {
     @Autowired
     FunnelRepository funnelRepository;
 }

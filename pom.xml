@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>igormedeiros</groupId>
-    <artifactId>crm33</artifactId>
+    <artifactId>funnel33</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>crm33</name>
-    <description>CRM Opensource Project</description>
+    <name>funnel33</name>
+    <description>Sales Funnel CRM Opensource Project</description>
     <properties>
         <java.version>8</java.version>
     </properties>

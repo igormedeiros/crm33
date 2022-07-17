@@ -1,10 +1,12 @@
 package br.com.igormedeiros.model.task;
 
 import br.com.igormedeiros.model.opportunitie.OpportunityModel;
+import br.com.igormedeiros.model.user.UserModel;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.UUID;
 
 @Data
 @Entity(name = "tb_tasks")
@@ -12,7 +14,7 @@ public class TaskModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private UUID id;
 
     private String name;
     private String description;
@@ -37,6 +39,9 @@ public class TaskModel {
     @JoinColumn(name = "Opportunity_id")
     private OpportunityModel Opportunity;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserModel user;
 
 
 }

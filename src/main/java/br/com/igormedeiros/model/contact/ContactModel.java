@@ -12,7 +12,7 @@ import java.util.UUID;
 public class ContactModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private UUID id;
 
     private String firstName;
     private String lastName;
