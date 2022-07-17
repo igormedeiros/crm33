@@ -1,6 +1,6 @@
 package br.com.igormedeiros.model.funnel;
 
-import br.com.igormedeiros.model.opportunitie.OpportunityModel;
+import br.com.igormedeiros.model.opportunity.OpportunityModel;
 import br.com.igormedeiros.model.user.UserModel;
 import lombok.Data;
 
@@ -15,7 +15,7 @@ public class FunnelModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID id;
+    private Long id;
 
     private String firstName;
     private String lastName;

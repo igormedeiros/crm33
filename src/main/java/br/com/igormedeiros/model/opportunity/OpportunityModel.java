@@ -1,4 +1,4 @@
-package br.com.igormedeiros.model.opportunitie;
+package br.com.igormedeiros.model.opportunity;
 
 import br.com.igormedeiros.model.contact.ContactModel;
 import br.com.igormedeiros.model.funnel.FunnelModel;
@@ -8,7 +8,6 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.UUID;
 
 @Data
 @Entity(name = "tb_opportunity")
@@ -16,7 +15,7 @@ public class OpportunityModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID id;
+    private Long id;
 
     private String name;
     private String description;
@@ -28,7 +27,7 @@ public class OpportunityModel {
     @OneToOne
     private OpportunityStageModel stage;
 
-    @OneToMany(mappedBy = "Opportunity")
+    @OneToMany(mappedBy = "opportunity")
     private List<TaskModel> tasks;
 
     @ManyToOne

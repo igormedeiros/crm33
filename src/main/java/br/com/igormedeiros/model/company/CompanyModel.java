@@ -1,5 +1,6 @@
-package br.com.igormedeiros.model.contact;
+package br.com.igormedeiros.model.company;
 
+import br.com.igormedeiros.model.contact.ContactModel;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -12,7 +13,7 @@ public class CompanyModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private Long id;
 
     private String name;
     private String description;

@@ -11,7 +11,7 @@ import java.util.UUID;
 public class TaskPriorityModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private Long id;
     private String name;
     private String description;
     private String priority; // 0 to 5, where 5 is the highest priority and 0 is the lowest priority

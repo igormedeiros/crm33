@@ -1,4 +1,4 @@
-package br.com.igormedeiros.repository;
+package br.com.igormedeiros.repository.funnel;
 
 import br.com.igormedeiros.model.funnel.FunnelModel;
 import org.springframework.data.jpa.repository.JpaRepository;

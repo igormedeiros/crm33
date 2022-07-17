@@ -1,4 +1,4 @@
-package br.com.igormedeiros.model.opportunitie;
+package br.com.igormedeiros.model.opportunity;
 
 import lombok.Data;
 
@@ -10,7 +10,7 @@ import java.util.UUID;
 public class OpportunityStageModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private Long id;
 
     private String name;
     private String description;

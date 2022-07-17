@@ -1,7 +1,7 @@
 package br.com.igormedeiros.model.user;
 
 import br.com.igormedeiros.model.funnel.FunnelModel;
-import br.com.igormedeiros.model.opportunitie.OpportunityModel;
+import br.com.igormedeiros.model.opportunity.OpportunityModel;
 import br.com.igormedeiros.model.task.TaskModel;
 import lombok.Data;
 
@@ -15,7 +15,7 @@ public class UserModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID id;
+    private Long id;
 
     private String firstName;
     private String lastName;

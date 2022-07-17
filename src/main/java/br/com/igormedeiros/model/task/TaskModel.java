@@ -1,6 +1,6 @@
 package br.com.igormedeiros.model.task;
 
-import br.com.igormedeiros.model.opportunitie.OpportunityModel;
+import br.com.igormedeiros.model.opportunity.OpportunityModel;
 import br.com.igormedeiros.model.user.UserModel;
 import lombok.Data;
 
@@ -14,7 +14,7 @@ public class TaskModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private Long id;
 
     private String name;
     private String description;
@@ -37,7 +37,7 @@ public class TaskModel {
 
     @ManyToOne
     @JoinColumn(name = "Opportunity_id")
-    private OpportunityModel Opportunity;
+    private OpportunityModel opportunity;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

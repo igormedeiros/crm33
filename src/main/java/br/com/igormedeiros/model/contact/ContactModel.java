@@ -1,6 +1,7 @@
 package br.com.igormedeiros.model.contact;
 
-import br.com.igormedeiros.model.opportunitie.OpportunityModel;
+import br.com.igormedeiros.model.company.CompanyModel;
+import br.com.igormedeiros.model.opportunity.OpportunityModel;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -12,7 +13,7 @@ import java.util.UUID;
 public class ContactModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID id;
+    private Long id;
 
     private String firstName;
     private String lastName;
