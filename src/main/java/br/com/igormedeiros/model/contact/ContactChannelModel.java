@@ -4,7 +4,6 @@ package br.com.igormedeiros.model.contact;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.UUID;
 
 @Data
 @Entity(name = "tb_contact_channels")

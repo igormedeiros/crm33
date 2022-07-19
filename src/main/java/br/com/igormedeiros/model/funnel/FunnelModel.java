@@ -7,7 +7,6 @@ import lombok.Data;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
-import java.util.UUID;
 
 @Data
 @Entity(name = "tb_funnels")
@@ -17,8 +16,7 @@ public class FunnelModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String firstName;
-    private String lastName;
+    private String name;
     private String description;
 
     @OneToMany(mappedBy = "funnel")

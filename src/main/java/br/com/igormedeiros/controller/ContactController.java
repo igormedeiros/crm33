@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping ("/contact")
+@RequestMapping("/contact")
 public class ContactController {
 
     @Autowired
@@ -23,4 +23,9 @@ public class ContactController {
     public void addContact(@RequestBody ContactModel contactModel) {
         contactRepository.save(contactModel);
     }
+
+    // TODO: get one Contact
+    // TODO: update one Contact
+    // TODO: delete one Contact
+    // TODO: remove stage from a funnel
 }

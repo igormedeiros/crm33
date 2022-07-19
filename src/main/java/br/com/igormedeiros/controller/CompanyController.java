@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping ("/company")
+@RequestMapping("/company")
 public class CompanyController {
 
     @Autowired
@@ -23,4 +23,9 @@ public class CompanyController {
     public void addCompany(@RequestBody CompanyModel companyModel) {
         companyRepository.save(companyModel);
     }
+
+    // TODO: get one Company
+    // TODO: update one Company
+    // TODO: delete one Company
+    // TODO: add a new contact to a company
 }

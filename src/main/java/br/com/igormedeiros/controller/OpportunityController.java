@@ -18,9 +18,14 @@ public class OpportunityController {
     public List<OpportunityModel> getOpportunities() {
         return opportunityRepository.findAll();
     }
+
     @PostMapping(path = "/new")
     public void addOpportunity(@RequestBody OpportunityModel opportunityModel) {
         opportunityRepository.save(opportunityModel);
     }
+
+    // TODO: get one Opportunity
+    // TODO: update one Opportunity
+    // TODO: delete one Opportunity
 
 }

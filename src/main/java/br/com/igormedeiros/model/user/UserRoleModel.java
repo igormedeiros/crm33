@@ -1,7 +1,6 @@
 package br.com.igormedeiros.model.user;
 
 import javax.persistence.*;
-import java.util.UUID;
 
 @Entity(name = "tb_user_roles")
 public class UserRoleModel {

@@ -5,8 +5,8 @@ import br.com.igormedeiros.model.user.UserModel;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
-import java.util.UUID;
 
 @Data
 @Entity(name = "tb_tasks")
@@ -17,12 +17,14 @@ public class TaskModel {
     private Long id;
 
     private String name;
+    @Column(columnDefinition = "text")
     private String description;
 
     @ManyToOne
     @JoinColumn(name = "type_id")
     private TaskTypeModel type;
 
+    @Column(columnDefinition = "text")
     private String notes;
 
     @ManyToOne
@@ -33,7 +35,7 @@ public class TaskModel {
     @JoinColumn(name = "status_id")
     private TaskStatusModel status;
 
-    private Date deadLine;
+    private LocalDateTime dueDate;
 
     @ManyToOne
     @JoinColumn(name = "Opportunity_id")
